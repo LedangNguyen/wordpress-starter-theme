@@ -1,0 +1,47 @@
+@import 'utils';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Main {
+  background-color: var(--color-black);
+
+  &-wrapper {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+    font-family: var(--font-family);
+    color: var(--color-white);
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  a {
+    color: var(--color-white);
+    transition: opacity ease-in-out 0.2s;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      opacity: 0.8;
+    }
+  }
+}

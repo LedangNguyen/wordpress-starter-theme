@@ -1,0 +1,36 @@
+// Remove default styling for inputs
+@mixin input() {
+  border: none;
+  outline: none;
+
+  &::outer-spin-button,
+  &::inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  &:hover,
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+// Adjust top property if admin bar is visible
+@mixin admin-bar-fix($offset: 0, $property: top) {
+  $narrow-offset: 46px;
+  $wide-offset: 32px;
+
+  @if $offset != 0 and type-of($offset) == 'number' {
+    $narrow-offset: $narrow-offset + $offset;
+    $wide-offset: $wide-offset + $offset;
+  }
+
+  .admin-bar & {
+    #{$property}: $narrow-offset;
+
+    @media screen and (min-width: 783px) {
+      #{$property}: $wide-offset;
+    }
+  }
+}
