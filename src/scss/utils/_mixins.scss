@@ -29,7 +29,7 @@
   .admin-bar & {
     #{$property}: $narrow-offset;
 
-    @media screen and (min-width: 783px) {
+    @media (min-width: 783px) {
       #{$property}: $wide-offset;
     }
   }

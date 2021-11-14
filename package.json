@@ -27,7 +27,10 @@
     "stylelint-config-standard": "^23.0.0",
     "stylelint-scss": "^4.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "modern-normalize": "^1.1.0",
+    "swiper": "^7.2.0"
+  },
   "browserslist": [
     "defaults",
     "not ie 11",

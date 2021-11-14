@@ -1,0 +1,48 @@
+.Main {
+  background-color: var(--color-black);
+
+  &-wrapper {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+    color: var(--color-white);
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity ease-in-out 2s, transform ease-in-out 1s;
+
+    .loaded & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .admin-bar & {
+      min-height: calc(100vh - 46px);
+
+      @media (min-width: 783px) {
+        min-height: calc(100vh - 32px);
+      }
+    }
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  a {
+    color: var(--color-white);
+    transition: opacity ease-in-out 0.2s;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      opacity: 0.8;
+    }
+  }
+}
