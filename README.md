@@ -19,7 +19,7 @@ yarn dev
 yarn prod
 ```
 
-## What inside
+## What's inside
 
 - [Laravel Mix 6](https://laravel-mix.com/) for assets compiling
 - [SCSS (Sass)](https://sass-lang.com/) is used as a preprocessor for CSS
