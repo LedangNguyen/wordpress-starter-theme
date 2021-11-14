@@ -8,7 +8,7 @@
     min-height: 100vh;
     color: var(--color-white);
     opacity: 0;
-    transform: translateY(200px);
+    transform: translateY(100px);
     transition: opacity ease-in-out 2s, transform ease-in-out 1s;
 
     .loaded & {

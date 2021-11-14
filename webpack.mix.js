@@ -4,6 +4,7 @@ const os = require('os');
 
 // Variables
 const proxy = 'http://wordpress-theme.test';
+const themeName = 'wordpress-theme';
 const sourcePath = os.platform() === 'win32' ? path.normalize('src') : 'src';
 const publicPath = os.platform() === 'win32' ? path.normalize('assets') : 'assets';
 
@@ -32,11 +33,23 @@ mix.babelConfig({
   ],
 });
 
+mix.alias({
+  '@': path.join(__dirname, 'node_modules'),
+  '~': path.join(__dirname, 'node_modules'),
+});
+
+// Fix for JavaScript Dynamic Imports
+mix.webpackConfig({
+  output: {
+    publicPath: `wp-content/themes/${themeName}/${publicPath}/`,
+  },
+});
+
 // Assets build and copying
 mix
-  .sass(`${sourcePath}/scss/entry.scss`, `css`)
-  .js(`${sourcePath}/js/entry.js`, `js`)
-  .copy(`${sourcePath}/images`, `${publicPath}/images`)
+  .sass(`${sourcePath}/scss/app.scss`, `css`)
+  .js(`${sourcePath}/js/app.js`, `js`)
+  .copyDirectory(`${sourcePath}/images`, `${publicPath}/images`)
   .sourceMaps(false, 'inline-source-map');
 
 // Versioning for production (cache busting)
@@ -56,7 +69,7 @@ mix.browserSync({
     forms: false,
     scroll: false,
   },
-  files: ['**/*.php', 'views/**/*.php', 'templates/*.php', `assets/css/entry.css`, `assets/js/entry.js`],
+  files: ['**/*.php', `assets/css/entry.css`, `assets/js/entry.js`],
 });
 
 // Disable OS notifications

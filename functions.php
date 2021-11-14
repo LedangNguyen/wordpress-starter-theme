@@ -12,7 +12,8 @@ $func_error = function ( $message, $subtitle = '', $title = '' ) {
 
 $includes = [
 	'helpers',
-	'bundle'
+	'bundle',
+	'custom',
 ];
 
 array_map( function ( $file ) use ( $func_error ) {

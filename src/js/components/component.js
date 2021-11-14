@@ -1,3 +1,1 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('loaded');
-});
+document.body.classList.add('loaded');

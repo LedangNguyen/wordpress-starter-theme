@@ -5,8 +5,8 @@
   "author": "Le Dang Nguyen <ledangwork@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "npx mix watch",
-    "prod": "npx mix --production"
+    "dev": "mix watch",
+    "prod": "mix --production"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
