@@ -32,7 +32,9 @@
   }
 
   p {
-    font-size: 1.25rem;
+    @media (min-width: 783px) {
+      font-size: 1.25rem;
+    }
   }
 
   a {

@@ -16,7 +16,7 @@ mix.setPublicPath(publicPath).options({
       stage: 1,
       autoprefixer: { grid: true },
     }),
-    require('css-mqpacker')({
+    require('@hail2u/css-mqpacker')({
       sort: true,
     }),
   ],
