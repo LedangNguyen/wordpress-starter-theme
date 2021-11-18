@@ -2,10 +2,11 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    node: true,
     es2021: true,
   },
-  parser: '@babel/eslint-parser',
+  parser: 'babel-eslint',
   parserOptions: {},
-  extends: ['plugin:prettier/recommended', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
   rules: {},
 };
