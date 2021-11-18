@@ -39,6 +39,24 @@ if ( ! is_admin() && ! is_login_page() ) {
 }
 
 /**
+ * Defer CSS loading
+ */
+function add_rel_preload( $html, $handle, $href, $media ) {
+	if ( is_admin() ) {
+		return $html;
+	}
+
+	$html = <<<EOT
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='$media' />
+EOT;
+
+	return $html;
+}
+
+add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );
+
+
+/**
  * Cleanup <head> from unneeded stuff
  */
 remove_action( 'wp_head', 'wp_generator' );

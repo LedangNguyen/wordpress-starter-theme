@@ -48,6 +48,7 @@ mix.webpackConfig({
 // Assets build and copying
 mix
   .sass(`${sourcePath}/scss/app.scss`, `css`)
+  .sass(`${sourcePath}/scss/critical.scss`, `css`)
   .js(`${sourcePath}/js/app.js`, `js`)
   .copyDirectory(`${sourcePath}/images`, `${publicPath}/images`)
   .sourceMaps(false, 'inline-source-map');
