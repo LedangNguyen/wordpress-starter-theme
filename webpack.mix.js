@@ -70,7 +70,7 @@ mix.browserSync({
     forms: false,
     scroll: false,
   },
-  files: ['**/*.php', `assets/css/entry.css`, `assets/js/entry.js`],
+  files: ['**/*.php', `assets/css/*.css`, `assets/js/*.js`],
 });
 
 // Disable OS notifications
