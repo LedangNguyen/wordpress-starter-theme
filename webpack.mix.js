@@ -19,6 +19,13 @@ mix.setPublicPath(publicPath).options({
     require('@hail2u/css-mqpacker')({
       sort: true,
     }),
+    require('postcss-assets')({
+      loadPaths: [`images/`],
+      basePath: `${sourcePath}/`,
+      baseUrl: `/wp-content/themes/${themeName}/${publicPath}/`,
+      // cachebuster: true,
+    }),
+    require('postcss-aspect-ratio-polyfill'),
   ],
 });
 
@@ -41,7 +48,7 @@ mix.alias({
 // Fix for JavaScript Dynamic Imports
 mix.webpackConfig({
   output: {
-    publicPath: `wp-content/themes/${themeName}/${publicPath}/`,
+    publicPath: `/wp-content/themes/${themeName}/${publicPath}/`,
   },
 });
 

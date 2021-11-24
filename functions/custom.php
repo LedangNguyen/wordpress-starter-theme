@@ -3,10 +3,30 @@
  * Theme Support
  */
 function theme_support() {
-	add_theme_support( 'html5' );
+	add_theme_support( 'html5', [
+		'comment-list',
+		'comment-form',
+		'search-form',
+		'gallery',
+		'caption',
+		'style',
+		'script',
+		'navigation-widgets',
+	] );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'custom-logo' );
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'custom-line-height' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'custom-spacing' );
+
+//	Uncomment two lines below if you want to add custom styles for Gutenberg editor
+//	add_theme_support( 'editor-styles' );
+//	add_editor_style( mix( 'css/editor-style.css' ) );
 }
 
 add_action( 'after_setup_theme', 'theme_support' );
@@ -47,7 +67,7 @@ function add_rel_preload( $html, $handle, $href, $media ) {
 	}
 
 	$html = <<<EOT
-<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='$media' />
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' media='$media' />
 EOT;
 
 	return $html;

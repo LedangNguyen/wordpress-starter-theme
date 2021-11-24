@@ -1,6 +1,7 @@
 <?php
 /**
  * Enqueue assets (styles and scripts)
+ * @noinspection Stylelint
  */
 function enqueue_scripts_and_styles() {
 	wp_enqueue_style( 'app', mix( 'css/app.css' ), [], wp_get_theme()->get( 'Version' ) );
@@ -11,7 +12,7 @@ function enqueue_scripts_and_styles() {
  * Enqueue Critical CSS
  */
 function enqueue_critical_css() {
-	echo '<style type="text/css" media="all" id="critical-css">' . file_get_contents( TEMPLATE_DIR . '/assets/css/critical.css' ) . '</style>';
+	echo '<style id="critical-css">' . file_get_contents( TEMPLATE_DIR . '/assets/css/critical.css' ) . '</style>';
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );
