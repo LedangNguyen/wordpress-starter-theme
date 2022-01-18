@@ -26,6 +26,10 @@ mix.setPublicPath(publicPath).options({
       // cachebuster: true,
     }),
     require('postcss-aspect-ratio-polyfill'),
+    require('@fullhuman/postcss-purgecss')({
+      content: ['./src/js/**/*.js', '**/*.php'],
+      safelist: ['admin-bar'],
+    }),
   ],
 });
 
@@ -34,7 +38,8 @@ mix.babelConfig({
     [
       '@babel/preset-env',
       {
-        targets: 'defaults, not ie 11, not op_mini all, not op_mob 64',
+        useBuiltIns: 'usage',
+        corejs: '3.20',
       },
     ],
   ],
@@ -49,6 +54,7 @@ mix.alias({
 mix.webpackConfig({
   output: {
     publicPath: `/wp-content/themes/${themeName}/${publicPath}/`,
+    chunkFilename: 'js/[name].[chunkhash].js',
   },
 });
 

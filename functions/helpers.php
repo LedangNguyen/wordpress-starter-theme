@@ -58,7 +58,7 @@ if ( ! function_exists('mix') ) {
  * @return string|bool
  */
 if ( ! function_exists( 'get_attachment_image' ) ) {
-	function get_attachment_image( $attachment_id, $size = 'full', $title = null, $alt = null, $className = null ): bool|string {
+	function get_attachment_image( $attachment_id, $size = 'full', $title = null, $alt = null, $className = null ) {
 		if ( empty( $attachment_id ) ) {
 			return false;
 		}
