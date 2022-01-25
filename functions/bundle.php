@@ -12,7 +12,7 @@ function enqueue_scripts_and_styles() {
  * Enqueue Critical CSS
  */
 function enqueue_critical_css() {
-	echo '<style id="critical-css">' . file_get_contents( TEMPLATE_DIR . '/assets/css/critical.css' ) . '</style>';
+	echo '<style id="critical-css">' . file_get_contents( TEMPLATE_DIR_URI . '/assets/css/critical.css' ) . '</style>';
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );

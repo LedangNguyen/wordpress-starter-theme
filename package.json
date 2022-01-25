@@ -19,6 +19,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "laravel-mix": "^6.0.41",
+    "laravel-mix-glob": "^1.1.10",
     "postcss": "^8.4.5",
     "postcss-aspect-ratio-polyfill": "^2.0.0",
     "postcss-assets": "^6.0.0",

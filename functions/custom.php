@@ -100,3 +100,41 @@ remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 
 // Remove meta rel=dns-prefetch href=//s.w.org
 remove_action( 'wp_head', 'wp_resource_hints', 2 );
+
+/**
+ * Add SVG Support
+ */
+function check_filetype_and_extension( $data, $file, $filename, $mimes ) {
+	global $wp_version;
+
+	if ( $wp_version !== '4.7.1' ) {
+		return $data;
+	}
+
+	$filetype = wp_check_filetype( $filename, $mimes );
+
+	return [
+		'ext'             => $filetype['ext'],
+		'type'            => $filetype['type'],
+		'proper_filename' => $data['proper_filename']
+	];
+}
+
+function cc_mime_types( $mimes ) {
+	$mimes['svg'] = 'image/svg+xml';
+
+	return $mimes;
+}
+
+function fix_svg() {
+	echo '<style type="text/css">
+        .attachment-266x266, .thumbnail img {
+             width: 100% !important;
+             height: auto !important;
+        }
+        </style>';
+}
+
+add_filter( 'wp_check_filetype_and_ext', 'check_filetype_and_extension', 10, 4 );
+add_filter( 'upload_mimes', 'cc_mime_types' );
+add_action( 'admin_head', 'fix_svg' );

@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+const MixGlob = require('laravel-mix-glob');
+const mixGlob = new MixGlob({ mix });
 const path = require('path');
 const os = require('os');
 
@@ -59,9 +61,9 @@ mix.webpackConfig({
 });
 
 // Assets build and copying
+mixGlob.sass(`${sourcePath}/scss/*.scss`, `css`);
+
 mix
-  .sass(`${sourcePath}/scss/app.scss`, `css`)
-  .sass(`${sourcePath}/scss/critical.scss`, `css`)
   .js(`${sourcePath}/js/app.js`, `js`)
   .copyDirectory(`${sourcePath}/images`, `${publicPath}/images`)
   .sourceMaps(false, 'inline-source-map');

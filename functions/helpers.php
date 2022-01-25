@@ -8,7 +8,7 @@
  *
  * @return string
  */
-if ( ! function_exists('mix') ) {
+if ( ! function_exists( 'mix' ) ) {
 	function mix( $path, $manifest_directory = 'assets' ): string {
 		static $manifest;
 		static $manifest_path;
@@ -54,11 +54,13 @@ if ( ! function_exists('mix') ) {
  * @param string $title
  * @param string $alt
  * @param string $className
+ * @param number $width
+ * @param number $height
  *
  * @return string|bool
  */
 if ( ! function_exists( 'get_attachment_image' ) ) {
-	function get_attachment_image( $attachment_id, $size = 'full', $title = null, $alt = null, $className = null ) {
+	function get_attachment_image( $attachment_id, $size = 'full', $title = null, $alt = null, $className = null, $width = null, $height = null ) {
 		if ( empty( $attachment_id ) ) {
 			return false;
 		}
@@ -81,6 +83,14 @@ if ( ! function_exists( 'get_attachment_image' ) ) {
 			$attrs['class'] .= wp_strip_all_tags( $className );
 		}
 
+		if ( ! empty( $width ) ) {
+			$attrs['width'] = wp_strip_all_tags( $width );
+		}
+
+		if ( ! empty( $height ) ) {
+			$attrs['height'] = wp_strip_all_tags( $height );
+		}
+
 		return wp_get_attachment_image( $attachment_id, $size, false, $attrs );
 	}
 }
@@ -89,12 +99,92 @@ if ( ! function_exists( 'get_attachment_image' ) ) {
  * Check if the current page is the login page
  */
 if ( ! function_exists( 'is_login_page' ) ) {
-	function is_login_page(): bool
-	{
+	function is_login_page(): bool {
 		return in_array(
 			$GLOBALS['pagenow'],
 			array( 'wp-login.php', 'wp-register.php' ),
 			true
 		);
+	}
+}
+
+/**
+ * Function that returns formatted block attributes (ids and classes)
+ *
+ * @param array $block
+ * @param string $className
+ * @param string $id
+ *
+ * @return string
+ */
+if ( ! function_exists( 'get_block_attributes' ) ) {
+	function get_block_attributes( array $block, string $className = '', string $id = '' ): string {
+		$attributes      = '';
+		$block_id        = $id;
+		$block_className = $className;
+
+		if ( ! empty( $block['anchor'] ) ) {
+			$block_id .= ' ' . $block['anchor'];
+		}
+
+		if ( ! empty( $block['className'] ) ) {
+			$block_className .= ' ' . $block['className'];
+		}
+
+		if ( ! empty( $block['align'] ) ) {
+			$block_className .= ' align' . $block['align'];
+		}
+
+		if ( ! empty( $block_id ) ) {
+			$attributes .= sprintf( 'id="%s" ', $block_id );
+		}
+
+		if ( ! empty( $block_className ) ) {
+			$attributes .= sprintf( 'class="%s"', $block_className );
+		}
+
+		return $attributes;
+	}
+}
+
+/**
+ * ACF Block Generator
+ *
+ * @param string $name
+ * @param string $title
+ * @param string $category
+ * @param string $render_template
+ *
+ * @return array
+ */
+if ( ! function_exists( 'acf_generate_block' ) ) {
+	function acf_generate_block( string $name, string $title, string $category, string $render_template ): array {
+		return [
+			'name'            => $name,
+			'title'           => $title,
+			'description'     => '',
+			'category'        => $category,
+			'keywords'        => [
+			],
+			'post_types'      => [
+			],
+			'mode'            => 'auto',
+			'align'           => '',
+			'align_content'   => null,
+			'render_template' => $render_template,
+			'render_callback' => '',
+			'enqueue_style'   => '',
+			'enqueue_script'  => '',
+			'enqueue_assets'  => '',
+			'icon'            => '',
+			'supports'        => [
+				'align'         => true,
+				'mode'          => true,
+				'multiple'      => true,
+				'jsx'           => false,
+				'align_content' => false,
+				'anchor'        => true,
+			],
+		];
 	}
 }
