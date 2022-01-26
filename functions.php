@@ -15,6 +15,7 @@ $includes = [
 	'helpers',
 	'bundle',
 	'custom',
+	'acf',
 ];
 
 array_map( function ( $file ) use ( $func_error ) {
