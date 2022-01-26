@@ -4,6 +4,8 @@ const mixGlob = new MixGlob({ mix });
 const path = require('path');
 const os = require('os');
 
+require('laravel-mix-clean');
+
 // Variables
 const proxy = 'http://wordpress-theme.test';
 const themeName = 'wordpress-theme';
@@ -66,7 +68,8 @@ mixGlob.sass(`${sourcePath}/scss/*.scss`, `css`);
 mix
   .js(`${sourcePath}/js/app.js`, `js`)
   .copyDirectory(`${sourcePath}/images`, `${publicPath}/images`)
-  .sourceMaps(false, 'inline-source-map');
+  .sourceMaps(false, 'inline-source-map')
+  .clean();
 
 // Versioning for production (cache busting)
 if (mix.inProduction()) {
