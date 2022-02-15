@@ -104,13 +104,7 @@ remove_action( 'wp_head', 'wp_resource_hints', 2 );
 /**
  * Add SVG Support
  */
-function check_filetype_and_extension( $data, $file, $filename, $mimes ) {
-	global $wp_version;
-
-	if ( $wp_version !== '4.7.1' ) {
-		return $data;
-	}
-
+function check_filetype_and_extension( $data, $file, $filename, $mimes ): array {
 	$filetype = wp_check_filetype( $filename, $mimes );
 
 	return [
