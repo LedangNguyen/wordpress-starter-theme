@@ -1,5 +1,11 @@
 {
     "require": {
-        "stoutlogic/acf-builder": "^1.12"
+        "stoutlogic/acf-builder": "^1.12",
+        "timber/timber": "^1.19",
+        "hellonico/timber-dump-extension": "^1.0"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     }
 }

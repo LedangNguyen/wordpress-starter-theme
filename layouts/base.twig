@@ -1,0 +1,32 @@
+<!doctype html>
+<html {{ site.language_attributes }}>
+<head>
+	<meta charset="{{ site.charset }}">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+
+	{{ function('wp_head') }}
+
+	{#    {% include "views/utils/google-tag-manager.twig" %} #}
+</head>
+
+<body class="{{ body_class }}">
+
+<div class="App">
+	{% block header %}
+		{% include 'views/common/header.twig' %}
+	{% endblock %}
+
+	{% block content %}
+		<p>Sorry, no content.</p>
+	{% endblock %}
+
+	{% block footer %}
+		{% include 'views/common/footer.twig' %}
+	{% endblock %}
+</div>
+
+{{ function('wp_footer') }}
+
+</body>
+</html>

@@ -2,6 +2,7 @@
 /**
  * Enqueue assets (styles and scripts)
  * @noinspection Stylelint
+ * @throws JsonException
  */
 function enqueue_scripts_and_styles() {
 	wp_enqueue_style( 'app', mix( 'css/app.css' ), [], wp_get_theme()->get( 'Version' ) );

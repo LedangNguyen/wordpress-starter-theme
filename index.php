@@ -1,11 +1,14 @@
-<?php get_header(); ?>
+<?php
+use Timber\Post;
+use Timber\Timber;
 
-<div class="Main">
-    <div class="Main-wrapper">
-        <h1><?php echo wp_get_theme()->get( 'Name' ); ?></h1>
-        <p><?php echo wp_get_theme()->get( 'Description' ); ?></p>
-        <p>Author: <a href="<?php echo wp_get_theme()->get( 'AuthorURI' ); ?>" target="_blank" rel="noopener noreferrer"><?php echo wp_get_theme()->get( 'Author' ); ?></a></p>
-    </div>
-</div>
+// Get context
+$context = Timber::context();
 
-<?php get_footer(); ?>
+// Get query Post
+$post = new Post();
+
+// Add data to context
+$context['post'] = $post;
+
+Timber::render( 'templates/index.twig', $context );
