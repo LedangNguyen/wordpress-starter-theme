@@ -30,10 +30,6 @@ mix.setPublicPath(publicPath).options({
       // cachebuster: true,
     }),
     require('postcss-aspect-ratio-polyfill'),
-    require('@fullhuman/postcss-purgecss')({
-      content: ['./src/js/**/*.js', '**/*.php'],
-      safelist: ['admin-bar'],
-    }),
   ],
 });
 
@@ -43,7 +39,7 @@ mix.babelConfig({
       '@babel/preset-env',
       {
         useBuiltIns: 'usage',
-        corejs: '3.21',
+        corejs: '3.22',
       },
     ],
   ],

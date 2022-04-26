@@ -6,12 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "mix watch",
-    "prod": "mix --production"
+    "build": "mix --production"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
-    "@fullhuman/postcss-purgecss": "^4.1.3",
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker",
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.27.7",
@@ -20,7 +19,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "laravel-mix": "^6.0.42",
+    "laravel-mix": "^6.0.43",
     "laravel-mix-clean": "^0.1.0",
     "laravel-mix-glob": "^1.1.10",
     "postcss": "^8.4.6",
@@ -37,7 +36,7 @@
     "webpack": "^5.68.0"
   },
   "dependencies": {
-    "core-js": "^3.21.0",
+    "core-js": "^3.22.2",
     "modern-normalize": "^1.1.0",
     "swiper": "^7.4.1"
   },
